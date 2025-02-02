@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+/* MainVisual */
+#MainVisual .kjy {
+    width: auto;
+    height: 90%;
+}
+
+#MainVisual .bottomText {
+    width: 90%;
+    bottom: 5%;
+}
+
+/* nav */
+nav .snb .spanBr {
+    display: block;
+}
+
+nav .snb .spanDPN {
+    display: none;
+}
+
+/* #information */
+#Information .informationArea {
+    width: 350px;
+}
+
+.notice {
+    width: 320px;
+}
+
+/* #Menu */
+#Menu .menuContentsWrap {
+    width: 350px;
+}
+
+.cocktail figure {
+    height: 400px;
+}
+
+.cock02 figure {
+    height: 300px;
+}
+
+@media all and (max-width:480px) {
+
+    /* 공통 */
+    section {
+        padding: 150px 0 0;
+    }
+
+    /* header */
+    header {
+        width: 300px;
+    }
+
+    /* mobileBtn */
+    .mobileBtn, .mobileBtn a {
+        display: block;
+    }
+
+    /* nav */
+    nav {
+        right: -100%;
+        transition: all 0.3s;
+    }
+
+    /* #information */
+    #Information .informationArea {
+        width: 350px;
+    }
+
+    .notice {
+        width: 350px;
+    }
+
+    /* MainVisual */
+    #MainVisual .romance {
+        width: 150px;
+        left: 15%;
+        bottom: 40%;
+    }
+
+    /* #Menu */
+    #Menu .menuContentsWrap {
+        width: 350px;
+    }
+
+    .cocktail figure {
+        height: 300px;
+    }
+
+    .cock01 .smallJY {
+        width: 24%;
+        left: 25%;
+    }
+
+    .cock02 figure {
+        height: 250px;
+    }
+
+    .cock02 .smallJY {
+        width: 22%;
+    }
+
+    .cock03 .smallJY {
+        width: 22%;
+        left: 53%;
+    }
+
+}
+
+@media all and (max-width:390px) {
+
+    /* #information */
+    #Information .informationArea {
+        width: 320px;
+    }
+
+    .notice {
+        width: 320px;
+    }
+
+    /* #Menu */
+    #Menu .menuContentsWrap {
+        width: 320px;
+    }
+}

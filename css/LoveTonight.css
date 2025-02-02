@@ -1,0 +1,808 @@
+@charset "utf-8";
+
+
+
+/* 변수설정 */
+:root {
+    --SUIT: 'SUIT';
+}
+
+/* 공통 */
+body {
+    position: relative;
+    font-family: var(--SUIT), sans-serif;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    word-break: keep-all;
+    -webkit-touch-callout:none;
+}
+
+#wrap {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0 auto;
+    scroll-behavior: smooth;
+}
+
+section {
+    margin: 0 auto 100px;
+    width: 100%;
+    height: 100vh;
+    padding: 220px 0 0;
+}
+
+span.alertText {
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    top: -40px;
+    right: 0;
+    position: absolute;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.59);
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    margin: 0 auto 20px;
+}
+
+span.alertText.alertNav {
+    padding: 3px 10px;
+    animation-name: twinkle;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+span.alertText.scrollDown {
+    display: none;
+    padding: 3px 15px 5px;
+    transform: translateX(-50%);
+    top: auto;
+    bottom: 4%;
+    left: 50%;
+    right: auto;
+
+    animation-name: down;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-timing-function: ease-in-out;
+}
+
+span.alertText.scrollDown svg {
+    position: relative;
+    bottom: -5px;
+
+}
+
+@-webkit-keyframes twinkle {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes down {
+    from {
+        bottom: 4%
+    }
+
+    to {
+        bottom: 3%;
+    }
+}
+
+/* loading */
+#loading {
+    position: absolute;
+    z-index: 100;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #ffcfcf;
+}
+
+/* backgound */
+.background {
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: linear-gradient(#393230, #0e0e0f);
+}
+
+.blurBg {
+    position: absolute;
+    border-radius: 50%;
+    -webkit-filter: blur(10px);
+}
+
+.background .bg1 {
+    width: 700px;
+    height: 350px;
+    top: 20%;
+    right: 30%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(#1c1d1c, rgba(0, 0, 0, 0) 80%);
+    opacity: 0.5;
+}
+
+.background .bg2 {
+    width: 600px;
+    height: 700px;
+    top: 4%;
+    left: 6%;
+    background: radial-gradient(#ad233c95, rgba(162, 108, 108, 0) 80%);
+    opacity: 0.2;
+}
+
+.background .bg3 {
+    width: 680px;
+    height: 450px;
+    top: -20%;
+    right: -15%;
+    background: radial-gradient(#ad233c95, rgba(162, 108, 108, 0) 80%);
+    opacity: 0.4;
+}
+
+.background .bg4 {
+    width: 700px;
+    height: 460px;
+    bottom: -20%;
+    left: -10%;
+    background: radial-gradient(#383937, rgba(0, 0, 0, 0) 70%);
+    opacity: 0.8;
+}
+
+.background .bg5 {
+    width: 700px;
+    height: 460px;
+    bottom: -20%;
+    right: 10%;
+    background: radial-gradient(#ad233c95, rgba(162, 108, 108, 0) 70%);
+    opacity: 0.6;
+}
+
+/* header */
+header {
+    position: fixed;
+    width: 450px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    z-index: 15;
+}
+
+h1 a {
+    display: block;
+}
+
+h1 img {
+    width: 100%;
+    -webkit-filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+}
+
+/* mobileBtn */
+.mobileBtn {
+    position: fixed;
+    z-index: 20;
+    top: 120px; right: 2%;
+    display: block;
+    width: 76px; height: 76px;
+    background: url(../ico/favicon_redheart.png)  no-repeat center / contain;
+    transition: all 0.5s;
+    display: none;
+}
+.mobileBtn a {
+    display: block;
+    padding: 25px 0 30px;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 14px;
+    display: none;
+    transition: all 0.5s;
+}
+.dim {
+    position: absolute;
+    z-index: 9;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+/* nav */
+nav {
+    position: fixed;
+    text-align: right;
+    transform: translate(-50%, -50%);
+    right: 10%;
+    top: 50%;
+    z-index: 10;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+nav .snb:before {
+    content: "";
+    width: 1px;
+    height: 100vh;
+    background: linear-gradient(0deg, rgba(55, 56, 54, 0) 0%, rgba(255, 116, 116, 0.545) 73%, rgba(26, 28, 30, 0) 100%);
+    position: absolute;
+    right: -19px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0px 0px 7px rgba(255, 255, 255, 0.373);
+}
+
+nav .snb {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+nav .snb li a:hover,
+nav .snb li a:focus {
+    color: rgba(255, 255, 255, 1);
+    transition: all 0.3s;
+}
+
+nav .snb li a {
+    position: relative;
+    transition: all 0.3s;
+}
+
+nav .snb li {
+    transition: all 0.3s;
+}
+
+nav .snb li.on {
+    transition: all 0.3s;
+    color: rgba(255, 255, 255, 1);
+}
+
+nav .snb li.on a::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url(../ico/favicon_redheart.png) no-repeat;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    right: -50px;
+    transition: all 0.3s;
+    -webkit-filter: drop-shadow(0px 0px 10px #c853539a);
+}
+
+nav .snb li+li {
+    margin-top: 1rem;
+}
+
+nav .snb li a {
+    display: block;
+}
+
+nav .snsArea .snsBtn {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    box-sizing: border-box;
+    padding: 5px;
+    background: no-repeat center / 70%;
+    border-radius: 40px;
+}
+
+nav .snsArea .snsBtn:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s;
+}
+
+nav .snsArea .snsBtn.twitter {
+    background-image: url(../ico/ico_x.png);
+    margin-bottom: 10px;
+}
+
+nav .snsArea .snsBtn.twitter:hover {
+    background-image: url(../ico/ico_x_on.png);
+}
+
+nav .snsArea .snsBtn.insta {
+    background-image: url(../ico/ico_insta.png);
+}
+
+nav .snsArea .snsBtn.insta:hover {
+    background-image: url(../ico/ico_insta_on.png);
+}
+
+/* #MainVisual */
+#MainVisual {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#MainVisual .MV_animation {
+    display: none;
+}
+
+#MainVisual img {
+    position: absolute;
+    transform: translateX(-50%);
+    -webkit-filter: drop-shadow(0px 0px 14px rgba(0, 0, 0, 0.5));
+}
+
+#MainVisual .kjy {
+    width: 44%;
+    bottom: 0;
+    left: 50%;
+}
+
+#MainVisual .romance {
+    width: 200px;
+    left: 27%;
+    bottom: 30%;
+}
+
+#MainVisual .bottomText {
+    width: 670px;
+    bottom: 60px;
+}
+
+#MainVisual .line1 {
+    width: 1980px;
+    bottom: auto;
+    transform: translate(-50%);
+    top: 0px;
+}
+
+#MainVisual .line2 {
+    width: 1980px;
+    transform: translate(-50%);
+    bottom: 0px;
+}
+
+/* #Information */
+#Information {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    text-align: left;
+    font-size: 18px;
+}
+
+#Information .informationArea {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.informationArea .info {
+    width: 100%;
+    height: calc(100vh - 220px);
+    display: flex;
+    flex-direction: column;
+}
+
+.info ul h3 {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.info ul li {
+    position: relative;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.info span {
+    display: block;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.info span.small {
+    font-size: 14px;
+    color: #ffcfcfaa;
+}
+
+
+.infoTop,
+.infoBottom {
+    width: 100%;
+    height: 44%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 44px;
+    box-sizing: border-box;
+}
+
+.infoTop>ul {
+    width: 48%;
+}
+
+.infoBottom>div {
+    width: 48%;
+}
+
+.infoTop ul li::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 32px;
+    height: 32px;
+    background: no-repeat center / contain;
+}
+
+.infoTop .place::before {
+    background-image: url(../ico/ico_place.png);
+}
+
+.infoTop .place a {
+    display: inline-block;
+    margin: 15px 5px 0 0;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 40px;
+}
+
+.infoTop .place a:hover {
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: 0.3s;
+}
+
+.infoTop .date::before {
+    background-image: url(../ico/ico_date.png);
+}
+
+.infoTop .gift li:first-child:before {
+    background-image: url(../ico/ico_gift.png);
+}
+
+.infoBottom {
+    position: relative;
+}
+
+.infoBottom>div h3:before {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: no-repeat center / contain;
+}
+
+.infoBottom .hashtag {
+    text-align: center;
+    position: relative;
+}
+
+.infoBottom .hashtagInfo {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: calc(50% - 44px); top: 50%;
+}
+
+.infoBottom .hashtag h3:before {
+    background-image: url(../ico/ico_hashtag.png);
+    margin: 0 auto 20px;
+}
+
+.infoBottom .hashtag h3 {
+    color: #f1455c;
+    margin-bottom: 20px;
+}
+
+.infoBottom .luckydraw {
+    position: relative;
+}
+
+.infoBottom .luckydraw h3:before {
+    position: absolute;
+    top: 0;
+    left: -40px;
+    background-image: url(../ico/ico_luckydraw.png);
+}
+
+.infoBottom .luckydraw h3 {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.infoBottom .luckydraw ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.infoBottom .luckydraw ul li {
+    width: 50%;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.infoBottom .luckydraw li span {
+    font-size: 14px;
+    color: #ffcfcf;
+}
+
+.informationArea .noticeArea {
+    width: 100%;
+    padding-bottom: 200px;
+}
+
+.notice h3 {
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #f35267;
+}
+
+.notice li {
+    line-height: 1.8;
+    margin-bottom: 30px;
+    padding-left: 20px;
+    position: relative;
+}
+.notice li::before {
+    content: '-';
+    position: absolute;
+    left: -5px;
+}
+.notice li strong {
+    font-weight: 600;
+    color: rgb(255, 175, 175);
+}
+
+.notice li a {
+    text-decoration: underline;
+    color: rgb(255, 175, 175);
+}
+
+/* #Menu */
+#Menu {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+#Menu .menuContentsWrap {
+    width: 900px;
+    margin: 0 auto;
+}
+
+#Menu h3 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #f35267;
+    text-align: left;
+}
+
+#Menu h4 {
+    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: 400;
+    color: rgb(255, 175, 175);
+    text-align: left;
+    position: relative;
+}
+
+#Menu h4::after {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 20px;
+    margin-left: 10px;
+    background: url(../ico/favicon_redheart.png) no-repeat center / contain;
+    transform: rotate(-90deg);
+}
+
+.cocktailArea {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 90px;
+}
+
+.cocktail {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.cocktail figure {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.cocktail .smallJY {
+    position: absolute;
+    width: 30%;
+    height: auto;
+    background: no-repeat center / contain;
+    -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.5));
+    opacity: 0;
+}
+
+.cocktail .cockPic {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 0;
+    -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.5));
+}
+
+.cock01 .cockPic {
+    position: absolute;
+    width: 80%;
+    transform: translateX(-35%);
+}
+
+.cock01 .smallJY {
+    left: 18%;
+    bottom: 9%;
+    background-image: url(../image/cosmo_c.png);
+}
+
+.cock02 .cockPic {
+    width: 55%;
+}
+
+.cock02 .smallJY {
+    left: 55%;
+    bottom: 47%;
+    background-image: url(../image/kahlua_c.png);
+}
+
+.cock03 .cockPic {
+    width: 100%;
+    transform: translateX(-65%);
+}
+
+.cock03 .smallJY {
+    left: 55%;
+    bottom: 90%;
+    background-image: url(../image/fizz_c.png);
+}
+
+.cockInfo .cockName {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 600;
+    position: relative;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+}
+
+.cockInfo .cockName::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    padding: 5px 20px;
+    background: rgba(255, 233, 233, 0.8);
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border: 7px solid rgba(255, 116, 116, 0.762);
+    -webkit-filter: blur(4px);
+}
+
+.cockInfo .cockPrice {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #ffcfcf;
+}
+
+.cockInfo .cockType {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.cockInfo .cockFlavor::after {
+    content: '';
+    display: inline-block;
+    margin-left: 4px;
+    width: 15px;
+    height: 15px;
+    background: no-repeat center / contain;
+    position: relative;
+    bottom: -2px;
+}
+
+.cock01 .cockInfo .cockFlavor::after {
+    background-image: url(../ico/ico_lime.png);
+}
+
+.cock02 .cockInfo .cockFlavor::after {
+    background-image: url(../ico/ico_coffee.png);
+}
+
+.cock03 .cockInfo .cockFlavor::after {
+    background-image: url(../ico/ico_soda.png);
+}
+
+#Menu .foodArea {
+    padding-bottom: 200px;
+}
+
+#Menu .foodArea h4 {
+    margin-bottom: 30px;
+}
+
+.foodArea ul li {
+    font-size: 20px;
+    line-height: 2.5;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.foodArea ul li::before {
+    content: '';
+    display: block;
+    width: 55%;
+    height: 100%;
+    position: absolute;
+    transform: translateX(-50%);
+    top: 0;
+    left: 55%;
+    background: url(../image/line_4.png) no-repeat center / contain;
+}
+
+.foodArea ul li:nth-child(2):before {
+    background-image: url(../image/line_5.png);
+}
+
+.foodArea ul li:nth-child(3):before {
+    background-image: url(../image/line_6.png);
+
+}
+
+/* #Teaser */
+#Teaser {
+    display: flex;
+    justify-content: center;
+}
+#Teaser video {
+    height: 65%;
+}
+.mobileVideo {
+    display: none;
+}
+
+/* footer */
+footer {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    bottom: 2%;
+    left: 50%;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+}
